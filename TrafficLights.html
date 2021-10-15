@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>document</title>
+    <style>
+        .container{
+            display: flex;
+            width: 400px;
+            height: 150px;
+            margin: auto;
+        }
+        .lights{
+            display: flex;
+            width: 75%;
+            height: 100%;
+            border: gray 2px solid;
+            border-radius: 20px;
+            margin-right: 20px;
+        }
+        .circle{
+            margin: auto;
+            width: 60px;
+            height: 60px;
+            background-color: gray;
+            border: gray 1px solid;
+            border-radius: 50%;
+        }
+        #btn{
+            width: 20%;
+            height: 100%;
+            border-radius: 20px;
+            border: gray 1px solid;
+        }
+        .traffic_red {
+        background-color: red;
+        }
+        .traffic_green {
+        background-color: green;
+        }
+        .traffic_yellow {
+        background-color: yellow;
+        }
+
+
+
+    </style>
+</head>
+<body>
+	<div class="container">
+        <div class="lights">
+            <div class="circle red traffic_red"></div>
+            <div class="circle yellow"></div>
+            <div class="circle green"></div>
+        </div>
+            <button id="btn">NEXT</button>
+        
+	</div>
+    <script>
+// Задание 4
+// Создать html-страницу со светофором и кнопкой, которая 
+// переключает светофор на следующий цвет 
+
+        const redlight = document.querySelector(".red");
+        const yellowlight = document.querySelector(".yellow");
+        const greenlight = document.querySelector(".green");
+        const btn = document.querySelector("#btn");;
+
+        btn.addEventListener("click", function() {
+        if (redlight.classList.contains("traffic_red")) {
+            redlight.classList.remove("traffic_red");
+            yellowlight.classList.add("traffic_yellow");
+        } else if (yellowlight.classList.contains("traffic_yellow")) {
+            yellowlight.classList.remove("traffic_yellow");
+            greenlight.classList.add("traffic_green");
+        } else if (greenlight.classList.contains("traffic_green")) {
+            greenlight.classList.remove("traffic_green");
+            redlight.classList.add("traffic_red");
+        }
+        });
+	</script>
+</body>
+</html>

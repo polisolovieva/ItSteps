@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>document</title>
+    <style>
+        .wrapper{
+            width: 200px;
+            height: 100px;
+            margin: auto;
+        }
+        #container {
+            height: 20px;
+            border: 1px solid black;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        #progress {
+            height: 100%;
+            background: #7FD29A;
+            width: 1%;
+        }
+        button{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id='container'>
+            <div id='progress'></div>
+        </div>
+        <button id="btn">Add 5 percent</button>
+    </div>
+    <script>
+// Задание 6
+// Создать html-страницу с progressbar и кнопкой, при нажатии 
+// на которую заполненность progressbar увеличивается на 5%.
+        let btn = document.querySelector("#btn");
+        let progress = document.querySelector("#progress");
+        let count = 1;
+        let width = 5;
+        
+        btn.addEventListener("click", function(){
+            if(count*width<=100){
+                progress.style.width=width*count+"%";
+                count++;
+            }
+            else{
+                count = 1;
+                progress.style.width=count+"%";
+            }
+        });
+	</script>
+</body>
+</html>

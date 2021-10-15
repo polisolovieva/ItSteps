@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #field{
+            width: 100vw;
+            height: 100vh;
+            background-color: #006400;
+            position: relative;
+            overflow: hidden;
+        }
+        #ball {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            transition: 1s all;
+        }
+        
+    </style>
+</head>
+<body>
+	<div id="field">
+        <img src="https://ru.js.cx/clipart/ball.svg" id="ball">
+	</div>
+  <script>
+// Задание 3
+// Создать html-страницу с футбольным полем, которое занимает всю ширину и высоту экрана, и мячом размером 100 на 100 
+// пикселей. 
+// Сделать так, чтобы при клике мышкой по полю, мяч плавно 
+// перемещался на место клика. Учтите: необходимо, чтобы центр 
+// мяча останавливался именно там, где был совершен клик мышкой. 
+// Также предусмотрите, чтобы мяч не выходил за границы поля 
+
+    field.onclick = function(event) {
+
+      let fieldCoords = this.getBoundingClientRect();
+      let ballCoords = {
+        top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
+        left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2
+      };
+      if (ballCoords.top < 0) ballCoords.top = 0;
+
+      if (ballCoords.left < 0) ballCoords.left = 0;
+
+      if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+        ballCoords.left = field.clientWidth - ball.clientWidth;
+      }
+      if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+        ballCoords.top = field.clientHeight - ball.clientHeight;
+      }
+
+      ball.style.left = ballCoords.left + 'px';
+      ball.style.top = ballCoords.top + 'px';
+    }
+	</script>
+</body>
+</html>

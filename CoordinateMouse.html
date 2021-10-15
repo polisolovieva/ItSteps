@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>document</title>
+    <style>
+        .container{
+            width: 100vw;
+            height: 100vh;
+            background-color: cadetblue;
+            position: relative;
+        }
+        .inner{
+            position: absolute;
+            width: 120px;
+            height: 30px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="inner"></div>
+    </div>
+    <script>
+// Задание 2
+// Создать html-страницу с div, который занимает всю ширину 
+// и высоту экрана. При движении мышкой внутри этого div, выводить 
+//текущие координаты мышки. При клике кнопкой мыши туда 
+// же, выводить, какой именно кнопкой был совершен клик (правой 
+// или левой)
+        let container = document.querySelector(".container");
+        let inner = document.querySelector(".inner");
+
+        container.addEventListener("mousemove", function(event){
+            inner.style.left = event.clientX +"px";
+            inner.style.top = event.clientY +"px";
+            inner.innerHTML = `x = ${event.clientX} y = ${event.clientY}`
+        });
+
+        container.addEventListener("mousedown", (function(event){
+            if(event.which === 1){
+                console.log("Левая");
+            }
+            else if(event.which === 3){
+                console.log("Правая");
+            }
+        }))
+
+        
+	</script>
+</body>
+</html>
